@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="EshoppingModel1.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="EshoppingModel1StoreContainer">
+          <EntitySet Name="roll" EntityType="EshoppingModel1.Store.roll" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Users" EntityType="EshoppingModel1.Store.Users" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK__roll__userId__182C9B23" Association="EshoppingModel1.Store.FK__roll__userId__182C9B23">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="roll" EntitySet="roll" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="roll">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="userId" Type="int" />
+          <Property Name="roll" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="firstName" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="middleName" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="lastName" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="mailId" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="phoneNumber" Type="varchar" Nullable="false" MaxLength="10" />
+        </EntityType>
+        <Association Name="FK__roll__userId__182C9B23">
+          <End Role="Users" Type="EshoppingModel1.Store.Users" Multiplicity="0..1" />
+          <End Role="roll" Type="EshoppingModel1.Store.roll" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="roll">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EshoppingModel1" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="EshoppingEntities1" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="rolls" EntityType="EshoppingModel1.roll" />
+          <EntitySet Name="Users" EntityType="EshoppingModel1.User" />
+          <AssociationSet Name="FK__roll__userId__182C9B23" Association="EshoppingModel1.FK__roll__userId__182C9B23">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="roll" EntitySet="rolls" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="roll">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="userId" Type="Int32" />
+          <Property Name="roll1" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="User" Relationship="EshoppingModel1.FK__roll__userId__182C9B23" FromRole="roll" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="firstName" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="middleName" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="lastName" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="mailId" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="phoneNumber" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="rolls" Relationship="EshoppingModel1.FK__roll__userId__182C9B23" FromRole="Users" ToRole="roll" />
+        </EntityType>
+        <Association Name="FK__roll__userId__182C9B23">
+          <End Role="Users" Type="EshoppingModel1.User" Multiplicity="0..1" />
+          <End Role="roll" Type="EshoppingModel1.roll" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="roll">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EshoppingModel1StoreContainer" CdmEntityContainer="EshoppingEntities1">
+          <EntitySetMapping Name="rolls">
+            <EntityTypeMapping TypeName="EshoppingModel1.roll">
+              <MappingFragment StoreEntitySet="roll">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="roll1" ColumnName="roll" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="EshoppingModel1.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="middleName" ColumnName="middleName" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="mailId" ColumnName="mailId" />
+                <ScalarProperty Name="phoneNumber" ColumnName="phoneNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

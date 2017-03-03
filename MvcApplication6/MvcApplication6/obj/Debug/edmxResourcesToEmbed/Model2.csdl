@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EshoppingModel1" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="EshoppingEntities1" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="rolls" EntityType="EshoppingModel1.roll" />
+    <EntitySet Name="Users" EntityType="EshoppingModel1.User" />
+    <AssociationSet Name="FK__roll__userId__182C9B23" Association="EshoppingModel1.FK__roll__userId__182C9B23">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="roll" EntitySet="rolls" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="roll">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="userId" Type="Int32" />
+    <Property Name="roll1" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="User" Relationship="EshoppingModel1.FK__roll__userId__182C9B23" FromRole="roll" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="firstName" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="middleName" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="lastName" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="mailId" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="phoneNumber" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="rolls" Relationship="EshoppingModel1.FK__roll__userId__182C9B23" FromRole="Users" ToRole="roll" />
+  </EntityType>
+  <Association Name="FK__roll__userId__182C9B23">
+    <End Role="Users" Type="EshoppingModel1.User" Multiplicity="0..1" />
+    <End Role="roll" Type="EshoppingModel1.roll" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="roll">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

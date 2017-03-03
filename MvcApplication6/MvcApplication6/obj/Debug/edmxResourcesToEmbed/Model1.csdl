@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EshoppingModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="EshoppingEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="Categories" EntityType="EshoppingModel.Category" />
+    <EntitySet Name="products" EntityType="EshoppingModel.product" />
+    <AssociationSet Name="FK__product__categor__239E4DCF" Association="EshoppingModel.FK__product__categor__239E4DCF">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="product" EntitySet="products" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="description" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="products" Relationship="EshoppingModel.FK__product__categor__239E4DCF" FromRole="Category" ToRole="product" />
+  </EntityType>
+  <EntityType Name="product">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="manufactureName" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="description" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="productImg" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="price" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="categoryId" Type="Int32" />
+    <NavigationProperty Name="Category" Relationship="EshoppingModel.FK__product__categor__239E4DCF" FromRole="product" ToRole="Category" />
+  </EntityType>
+  <Association Name="FK__product__categor__239E4DCF">
+    <End Role="Category" Type="EshoppingModel.Category" Multiplicity="0..1" />
+    <End Role="product" Type="EshoppingModel.product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="product">
+        <PropertyRef Name="categoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

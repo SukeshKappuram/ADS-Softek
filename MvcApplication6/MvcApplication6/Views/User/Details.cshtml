@@ -1,0 +1,50 @@
+﻿@model MvcApplication6.User
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>User</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.firstName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.firstName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.middleName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.middleName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.lastName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.lastName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.mailId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.mailId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.phoneNumber)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.phoneNumber)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
