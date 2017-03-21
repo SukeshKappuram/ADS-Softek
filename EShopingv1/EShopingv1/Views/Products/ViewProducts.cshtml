@@ -1,0 +1,53 @@
+﻿@model IEnumerable<EShopingv1.Models.Product>
+@{
+    ViewBag.Title = "ViewProducts";
+    var q = ViewBag.categories;
+    string y="";
+    EShopingv1.Models.User u = (EShopingv1.Models.User)Session["user"];
+}
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#"><i>@u.firstName</i> <span class="glyphicon glyphicon-shopping-cart"></span></a>
+        </div>
+        <ul class="nav navbar-nav">
+@foreach (var group in q) {
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    @foreach (var c in group) {
+                       y = @c.Category.Name;
+                    }
+                    @y
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    @foreach (var car in group) { 
+                    <li><a href="ViewProducts/@car.CategoryId">@car.Name</a></li>
+                    }
+                </ul>
+            </li>
+}
+        </ul>
+    </div>
+</nav>
+
+<h2>ViewProducts</h2>
+
+<div class="container">
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <img src="http://www.astross.in/wp-content/uploads/2016/12/hp-spectre-x360_beauty-100570598-orig.jpg" alt="...">
+                <div class="caption">
+                    <h3>@Html.DisplayFor(modelItem => item.Name)</h3>
+                    <p>@Html.DisplayFor(modelItem => item.Description)</p>
+                    <p>@Html.DisplayFor(modelItem => item.manufactureName)</p>
+                    <p>@Html.DisplayFor(modelItem => item.Price)</p>
+                    <p><a href="/Carts/AddToCart/@item.Id" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                </div>
+            </div>
+        </div>
+    }
+</div>

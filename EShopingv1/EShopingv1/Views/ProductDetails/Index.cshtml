@@ -1,0 +1,63 @@
+﻿@model IEnumerable<EShopingv1.Models.ProductDetails>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.product.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.seller.firstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExpieryDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ManufactureDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Size)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Color)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.product.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.seller.firstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExpieryDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ManufactureDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Size)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Color)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.SerialNumber }) |
+            @Html.ActionLink("Details", "Details", new { id=item.SerialNumber }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.SerialNumber })
+        </td>
+    </tr>
+}
+
+</table>
