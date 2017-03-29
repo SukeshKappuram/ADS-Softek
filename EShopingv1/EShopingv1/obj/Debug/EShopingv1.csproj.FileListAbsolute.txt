@@ -22,3 +22,28 @@ C:\Users\iamsu\documents\visual studio 2013\Projects\EShopingv1\EShopingv1\obj\D
 C:\Users\iamsu\documents\visual studio 2013\Projects\EShopingv1\EShopingv1\obj\Debug\EShopingv1.Migrations.InitialCreate.resources
 C:\Users\iamsu\documents\visual studio 2013\Projects\EShopingv1\EShopingv1\obj\Debug\EShopingv1.csproj.GenerateResource.Cache
 C:\Users\iamsu\Documents\Visual Studio 2013\Projects\EShopingv1\EShopingv1\obj\Debug\EShopingv1.csprojResolveAssemblyReference.cache
+D:\ADS Softek\EShopingv1\EShopingv1\bin\EShopingv1.dll.config
+D:\ADS Softek\EShopingv1\EShopingv1\bin\EShopingv1.dll
+D:\ADS Softek\EShopingv1\EShopingv1\bin\EShopingv1.pdb
+D:\ADS Softek\EShopingv1\EShopingv1\bin\EntityFramework.dll
+D:\ADS Softek\EShopingv1\EShopingv1\bin\EntityFramework.SqlServer.dll
+D:\ADS Softek\EShopingv1\EShopingv1\bin\Microsoft.Web.Infrastructure.dll
+D:\ADS Softek\EShopingv1\EShopingv1\bin\System.Web.Helpers.dll
+D:\ADS Softek\EShopingv1\EShopingv1\bin\System.Web.Mvc.dll
+D:\ADS Softek\EShopingv1\EShopingv1\bin\System.Web.Razor.dll
+D:\ADS Softek\EShopingv1\EShopingv1\bin\System.Web.Webpages.Deployment.dll
+D:\ADS Softek\EShopingv1\EShopingv1\bin\System.Web.Webpages.dll
+D:\ADS Softek\EShopingv1\EShopingv1\bin\System.Web.Webpages.Razor.dll
+D:\ADS Softek\EShopingv1\EShopingv1\bin\EntityFramework.xml
+D:\ADS Softek\EShopingv1\EShopingv1\bin\EntityFramework.SqlServer.xml
+D:\ADS Softek\EShopingv1\EShopingv1\bin\System.Web.Razor.xml
+D:\ADS Softek\EShopingv1\EShopingv1\bin\System.Web.Webpages.xml
+D:\ADS Softek\EShopingv1\EShopingv1\bin\System.Web.Webpages.Deployment.xml
+D:\ADS Softek\EShopingv1\EShopingv1\bin\System.Web.Webpages.Razor.xml
+D:\ADS Softek\EShopingv1\EShopingv1\bin\System.Web.Helpers.xml
+D:\ADS Softek\EShopingv1\EShopingv1\bin\System.Web.Mvc.xml
+D:\ADS Softek\EShopingv1\EShopingv1\obj\Debug\EShopingv1.csprojResolveAssemblyReference.cache
+D:\ADS Softek\EShopingv1\EShopingv1\obj\Debug\EShopingv1.Migrations.InitialCreate.resources
+D:\ADS Softek\EShopingv1\EShopingv1\obj\Debug\EShopingv1.csproj.GenerateResource.Cache
+D:\ADS Softek\EShopingv1\EShopingv1\obj\Debug\EShopingv1.dll
+D:\ADS Softek\EShopingv1\EShopingv1\obj\Debug\EShopingv1.pdb

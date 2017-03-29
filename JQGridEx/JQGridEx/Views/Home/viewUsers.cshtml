@@ -1,0 +1,39 @@
+﻿
+<div>
+    <table id="grid"></table>
+    <div id="pager"></div>
+</div>
+
+<script>
+    $(function () {
+        $("#grid").jqGrid({
+            url: "/Home/selectUser",
+            datatype: 'json',
+            mtype: 'Get',
+            colNames: ["Id", "firstName", "middleName", "lastName", "phoneNumber", "emailId"],
+            colModel: [{ name: "Id", key: true, index: 'Id' },
+                { name: "firstName", index: 'firstName' },
+                { name: "middleName", index: 'middleName' },
+                { name: "LastName", index: 'lastName' },
+                { name: "phoneNumber", index: 'phoneNumber' },
+                { name: "MailId", index: 'MailId' },
+            ],
+            height: 'auto',
+            autowidth: 'true',
+            rowNum: 5,
+            LoadOnce: true,
+            rowList: [10, 20, 30],
+            pager: 'pager',
+            sortName: 'firstname',
+            viewrecords: true,
+            sortorder: 'asc',
+            caption: 'List of Users',
+            emptyrecords: 'no records',
+            jsonreader: {
+                repeatitems: false,
+                id: "0"
+            },
+            multiselect: false,
+        });
+    });
+</script>
