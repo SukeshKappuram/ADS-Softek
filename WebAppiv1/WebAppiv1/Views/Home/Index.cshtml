@@ -1,0 +1,43 @@
+﻿<div class="jumbotron">
+    <h1>ASP.NET</h1>
+    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
+    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+</div>
+
+<div>
+    @Scripts.Render("~/bundles/jquery")
+
+    <input type="button" id="btnGetProduct" value="Get Product">
+    <div id="divProduct">
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Desc</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody id="tBody"></tbody>
+        </table>
+    </div>
+    <script type="text/javascript">
+var AllProduct;
+$(document).ready(function () {
+
+$("#btnGetProduct").click(function () {
+//Do an AJAx Call here
+$.getJSON('@Url.Action("Products", "api")')
+.done(function (data) {
+// On success, ‘data’ contains a list of Products.
+AllProduct = data;
+
+for (var i = 0; i < AllProduct.length; i++) {
+$("tBody").append(AllProduct[i].Name);
+};
+});
+
+});
+
+});
+    </script>
+</div>

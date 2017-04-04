@@ -1,0 +1,6 @@
+namespace WebAppiv1.Areas.HelpPage.ModelDescriptions
+{
+    public class SimpleTypeModelDescription : ModelDescription
+    {
+    }
+}
