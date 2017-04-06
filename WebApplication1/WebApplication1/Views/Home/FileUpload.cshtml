@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "FileUpload";
+}
+
+<h2>FileUpload</h2>
+<input type="file" class="upload" id="f_UploadImage"><br />
+<img id="myUploadedImg" alt="Photo" style="width:180px;" />
+
+<script>
+    function sendFile(file) {
+
+        var formData = new FormData();
+        formData.append('file', $('#f_UploadImage')[0].files[0]);
+        $.ajax({
+            type: 'post',
+            url: 'fileUploader.ashx',
+            data: formData,
+            success: function (status) {
+                if (status != 'error') {
+                    var my_path = "MediaUploader/" + status;
+                    $("#myUploadedImg").attr("src", my_path);
+                }
+            },
+            processData: false,
+            contentType: false,
+            error: function () {
+                alert("Whoops something went wrong!");
+            }
+        });
+    }
+</script>

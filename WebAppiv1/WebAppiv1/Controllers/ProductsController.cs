@@ -29,33 +29,62 @@ namespace WebAppiv1.Controllers
         }
 
         // POST api/values
-        public void Post([FromBody]Product p)
+        public HttpResponseMessage Post([FromBody]Product p)
         {
-            ProductDB Db = new ProductDB();
-            Db.products.Add(p);
-            Db.SaveChanges();
+            try
+            {
+                ProductDB Db = new ProductDB();
+                Db.products.Add(p);
+                Db.SaveChanges();
+                var msg = Request.CreateResponse(HttpStatusCode.Created, p);
+                return msg;
+            }
+            catch (Exception Ex) {
+                var msg = Request.CreateErrorResponse(HttpStatusCode.BadGateway, Ex);
+                return msg;
+            }
         }
 
         // PUT api/values/5
-        public void Put(int id, [FromBody]Product p)
+        public HttpResponseMessage Put(int id, [FromBody]Product p)
         {
-            ProductDB Db = new ProductDB();
-            Product pd = Db.products.Find(id);
-            pd.Id = p.Id;
-            pd.Name = p.Name;
-            pd.Description = pd.Description;
-            pd.manufactureName = p.manufactureName;
-            pd.Price = p.Price;
-            Db.SaveChanges();
+            try
+            {
+                ProductDB Db = new ProductDB();
+                Product pd = Db.products.Find(id);
+                pd.Id = p.Id;
+                pd.Name = p.Name;
+                pd.Description = pd.Description;
+                pd.manufactureName = p.manufactureName;
+                pd.Price = p.Price;
+                Db.SaveChanges();
+                var msg = Request.CreateResponse(HttpStatusCode.OK, p);
+                return msg;
+            }
+            catch (Exception Ex)
+            {
+                var msg = Request.CreateErrorResponse(HttpStatusCode.NotModified, Ex);
+                return msg;
+            }
         }
 
         // DELETE api/values/5
-        public void Delete(int id)
+        public HttpResponseMessage Delete(int id)
         {
-            ProductDB Db = new ProductDB();
-            Product p = Db.products.Single(ps => ps.Id == id);
-            Db.products.Remove(p);
-            Db.SaveChanges();
+            try
+            {
+                ProductDB Db = new ProductDB();
+                Product p = Db.products.Single(ps => ps.Id == id);
+                Db.products.Remove(p);
+                Db.SaveChanges();
+                var msg = Request.CreateResponse(HttpStatusCode.OK, p);
+                return msg;
+            }
+            catch (Exception Ex)
+            {
+                var msg = Request.CreateErrorResponse(HttpStatusCode.NotFound, Ex);
+                return msg;
+            }
         }
     }
 }

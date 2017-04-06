@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "ShowImage";
+}
+
+<h2>ShowImage</h2>
+
+<img id="showImg" src="" width="200" height="200" />
+
+
+<script type="text/javascript">
+$(document).ready(function () {
+
+       alert('loading');
+
+       $.ajax({
+           type: "GET",
+           url: "/api/FileUpload/1",
+           dataType: "image/jpg",
+           success: function (data) {
+               $('#showImg').attr('src', data);
+           }
+       });
+        
+       alert('loaded');
+ 
+});
+    </script>

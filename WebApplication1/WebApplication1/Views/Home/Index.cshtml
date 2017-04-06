@@ -1,0 +1,11 @@
+﻿
+@using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" })) { 
+    <h3>Uplaod Image</h3>
+    <input type="file" name="file" value="Browse"/>
+    <input type="submit" value="Upload"/>
+    
+}
+
+@if (ViewBag.UploadSuccess == true) { 
+    <span>Upload Completed Successfully</span>
+}
