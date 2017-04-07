@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using EshoppingV2._0.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace EshoppingV2._0.Controllers
 {
@@ -76,6 +77,7 @@ namespace EshoppingV2._0.Controllers
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            
             switch (result)
             {
                 case SignInStatus.Success:
@@ -86,7 +88,7 @@ namespace EshoppingV2._0.Controllers
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
                 case SignInStatus.Failure:
                 default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
+                    ModelState.AddModelError("", "Invalid login attempt."+result);
                     return View(model);
             }
         }
@@ -151,11 +153,14 @@ namespace EshoppingV2._0.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.firstName + " " + model.lastName, Email = model.Email, 
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, 
                     firstName = model.firstName, middleName = model.middleName,lastName = model.lastName,PhoneNumber=model.phoneNumber };
                 var result = await UserManager.CreateAsync(user, model.Password);
+                
+                
                 if (result.Succeeded)
                 {
+                    await UserManager.AddToRoleAsync(user.Id, "Customer");
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
@@ -169,6 +174,47 @@ namespace EshoppingV2._0.Controllers
                 AddErrors(result);
             }
 
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
+
+        //
+        // GET: /Account/SellerRegister
+        [AllowAnonymous]
+        public ActionResult SellerRegister()
+        {
+            return View();
+        }
+
+        //
+        // POST: /Account/SellerRegister
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> SellerRegister(SellerRegisterViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new Seller
+                {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    firstName = model.firstName,
+                    middleName = model.middleName,
+                    lastName = model.lastName,
+                    PhoneNumber = model.phoneNumber,
+                    OutletName = model.OutletName
+                };
+                var result = await UserManager.CreateAsync(user, model.Password);
+
+                if (result.Succeeded)
+                {
+                    await UserManager.AddToRoleAsync(user.Id, "Seller");
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                    return RedirectToAction("Index", "Home");
+                }
+                AddErrors(result);
+            }
             // If we got this far, something failed, redisplay form
             return View(model);
         }

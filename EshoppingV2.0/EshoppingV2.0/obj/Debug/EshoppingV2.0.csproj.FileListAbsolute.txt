@@ -19,7 +19,10 @@ D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\bin\Microsoft.Owin.Security.Twitter.dl
 D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\bin\Microsoft.Web.Infrastructure.dll
 D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\bin\Newtonsoft.Json.dll
 D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\bin\Owin.dll
+D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\bin\System.Net.Http.Formatting.dll
 D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\bin\System.Web.Helpers.dll
+D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\bin\System.Web.Http.dll
+D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\bin\System.Web.Http.WebHost.dll
 D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\bin\System.Web.Mvc.dll
 D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\bin\System.Web.Optimization.dll
 D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\bin\System.Web.Razor.dll
@@ -27,6 +30,9 @@ D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\bin\System.Web.WebPages.Deployment.dll
 D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\bin\System.Web.WebPages.dll
 D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\bin\System.Web.WebPages.Razor.dll
 D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\bin\WebGrease.dll
+D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\bin\System.Net.Http.Formatting.xml
+D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\bin\System.Web.Http.xml
+D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\bin\System.Web.Http.WebHost.xml
 D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\bin\System.Web.Helpers.xml
 D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\bin\System.Web.Mvc.xml
 D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\bin\System.Web.Optimization.xml
@@ -50,6 +56,6 @@ D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\bin\Microsoft.Owin.Security.OAuth.xml
 D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\bin\Microsoft.Owin.Security.Google.xml
 D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\bin\Microsoft.Owin.Security.Twitter.xml
 D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\obj\Debug\EshoppingV2.0.csprojResolveAssemblyReference.cache
 D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\obj\Debug\EshoppingV2.0.dll
 D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\obj\Debug\EshoppingV2.0.pdb
+D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\obj\Debug\EshoppingV2.0.csprojResolveAssemblyReference.cache

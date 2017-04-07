@@ -68,7 +68,6 @@ namespace EshoppingV2._0.Models
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [Display(Name = "First Name")]
         public string firstName { get; set; }
-        [Required]
         [Display(Name = "Middel Name")]
         public string middleName { get; set; }
         [Required]
@@ -96,6 +95,12 @@ namespace EshoppingV2._0.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+    }
+
+    public class SellerRegisterViewModel:RegisterViewModel
+    {
+        [Display(Name = "Òutlet Name")]
+        public string OutletName { get; set; }
     }
 
     public class ResetPasswordViewModel

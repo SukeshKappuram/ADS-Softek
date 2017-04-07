@@ -22,6 +22,10 @@ namespace EshoppingV2._0.Models
         }
     }
 
+    public class ApplicationRole : IdentityRole { 
+        
+    }
+
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
@@ -33,5 +37,9 @@ namespace EshoppingV2._0.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<EshoppingV2._0.Models.Category> Categories { get; set; }
+
+        public System.Data.Entity.DbSet<EshoppingV2._0.Models.Seller> ApplicationUsers { get; set; }
     }
 }
