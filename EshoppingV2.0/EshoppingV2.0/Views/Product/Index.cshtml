@@ -1,0 +1,38 @@
+﻿<div>
+    @Scripts.Render("~/bundles/jquery")
+
+    <div id="divProduct">
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Desc</th>
+                    <th>Price</th>
+                    <th>Manufacture Name</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody id="tBody"></tbody>
+        </table>
+    </div>
+    <script type="text/javascript">
+var AllProduct;
+$(document).ready(function () {
+
+//Do an AJAx Call here
+$.getJSON('@Url.Action("Products", "api")')
+.done(function (data) {
+// On success, ‘data’ contains a list of Products.
+AllProduct = data;
+
+for (var i = 0; i < AllProduct.length; i++) {
+    $("tBody").append("<tr><td>" + AllProduct[i].Name + "</td><td>" + AllProduct[i].Description + "</td><td>" + AllProduct[i].Price + "</td><td>" + AllProduct[i].manufactureName +
+        "</td><td><a href='/Product/Edit/" + AllProduct[i].Id + "'>Edit</a></td><td><a href=''>Delete</a></td></tr>");
+
+};
+});
+
+});
+    </script>
+</div>

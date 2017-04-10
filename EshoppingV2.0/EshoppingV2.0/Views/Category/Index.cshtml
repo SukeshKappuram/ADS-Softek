@@ -1,39 +1,84 @@
-﻿@model IEnumerable<EshoppingV2._0.Models.Category>
+﻿
+<div>
+    <table id="grid"></table>
+    <div id="pager"></div>
+</div>
 
-@{
-    ViewBag.Title = "Index";
-}
+<script>
+    $(function () {
+        $("#grid").jqGrid({
+            url: "/Category/selectCategory",
+            datatype: 'json',
+            mtype: 'Get',
+            colNames: ["Id", "Name", "Description"],
+            colModel: [{ name: "Id", key: true, index: 'Id', hidden: true, editable: true },
+                { name: "Name", index: 'Name', editable: true, sortable: true },
+                { name: "Description", index: 'Description', editable: true, sortable: true },
+            ],
+            height: 'auto',
+            autowidth: 'true',
+            rowNum: 5,
+            LoadOnce: true,
+            rowList: [10, 20, 30],
+            pager: 'pager',
+            sortName: 'Name',
+            viewrecords: true,
+            sortorder: 'asc',
+            caption: 'List of Categories',
+            emptyrecords: 'no records',
+            jsonreader: {
+                repeatitems: false,
+                id: "0"
+            },
+            multiselect: false,
+        }).navGrid('#pager', { edit: true, add: true, del: true, search: true, refresh: true, },
+        {
+            //EDIT OPTIONS
+            width: 600,
+            url: '/Category/UpdateCategory',
+            closeAfterEdit: true,
+            onInitializeForm: function () {
+                $('#ExpiryDate').datepicker({
+                    changeMonth: true,
+                    changeYear: true,
+                    nextText: "",
+                    prevText: ""
+                })
+            },
+            afterComplete: function (response) {
+                $('#grid').setGridParam({ datatype: 'json', page: 1 }).trigger('reloadGrid');
+                alert(response.responseText)
+            },
 
-<h2>Index</h2>
+        },
+        {
+            //ADD OPTIONS
+            width: 600,
+            url: '/Category/InsertCategory',
+            closeAfterAdd: true,
+            afterComplete: function (response) {
+                $('#grid').setGridParam({ datatype: 'json', page: 1 }).trigger('reloadGrid');
+                alert(response.responseText)
+            },
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th></th>
-    </tr>
+        },
+        {
+            //DELETE OPTIONS
+            width: 600,
+            url: '/Category/DeleteCategory',
+            closeAfterDelete: true,
+            msg: "Are you sure u want to delete this data?",
+            afterComplete: function (response) {
+                $('#grid').setGridParam({ datatype: 'json', page: 1 }).trigger('reloadGrid');
+                alert(response.responseText)
+            },
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
-
-</table>
+        },
+        {
+            //SEARCH OPTIONS
+            width: 600,
+            multipleSearch: true,
+        }
+        );
+    });
+</script>

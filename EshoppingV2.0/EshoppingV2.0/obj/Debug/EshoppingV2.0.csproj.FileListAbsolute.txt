@@ -59,3 +59,5 @@ D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\bin\Microsoft.Owin.Security.MicrosoftA
 D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\obj\Debug\EshoppingV2.0.dll
 D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\obj\Debug\EshoppingV2.0.pdb
 D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\obj\Debug\EshoppingV2.0.csprojResolveAssemblyReference.cache
+D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\bin\EshoppingBL.dll
+D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\bin\EshoppingBL.pdb

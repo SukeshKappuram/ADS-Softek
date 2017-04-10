@@ -6,7 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using EshoppingV2._0.Models;
+using EshoppingBL;
 
 
 namespace EshoppingV2._0.Controllers
@@ -14,116 +14,77 @@ namespace EshoppingV2._0.Controllers
     [Authorize(Roles="Admin")]
     public class CategoryController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        CategoryBL categoryBl = new CategoryBL();
 
-        // GET: Category
         public ActionResult Index()
-        {
-            return View(db.Categories.ToList());
-        }
-
-        // GET: Category/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Category category = db.Categories.Find(id);
-            if (category == null)
-            {
-                return HttpNotFound();
-            }
-            return View(category);
-        }
-
-        // GET: Category/Create
-        public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Category/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Description")] Category category)
+        public JsonResult selectCategory()
         {
+            return Json(categoryBl.Categorys.ToList(), JsonRequestBehavior.AllowGet);
+        }
+
+        public string InsertCategory([Bind(Exclude = "Id")]Category Category)
+        {
+            string msg;
             if (ModelState.IsValid)
             {
-                db.Categories.Add(category);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (categoryBl.InsertCategory(Category) > 0)
+                {
+                    msg = "Data Inserted Successfully";
+                }
+                else
+                {
+                    msg = "Error. Could Not Insert Data";
+                }
+            }
+            else
+            {
+                msg = "Sorry! Validation Error";
             }
 
-            return View(category);
+            return msg;
         }
 
-        // GET: Category/Edit/5
-        public ActionResult Edit(int? id)
+        public string UpdateCategory(Category Category)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Category category = db.Categories.Find(id);
-            if (category == null)
-            {
-                return HttpNotFound();
-            }
-            return View(category);
-        }
-
-        // POST: Category/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Description")] Category category)
-        {
+            string msg;
             if (ModelState.IsValid)
             {
-                db.Entry(category).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (categoryBl.UpdateCategory(Category) > 0)
+                {
+                    msg = "Data Updated Successfully";
+                }
+                else
+                {
+                    msg = "Error. Could Not Update Data";
+                }
             }
-            return View(category);
+            else
+            {
+                msg = "Sorry! Validation Error";
+            }
+
+            return msg;
         }
 
-        // GET: Category/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Category category = db.Categories.Find(id);
-            if (category == null)
-            {
-                return HttpNotFound();
-            }
-            return View(category);
-        }
 
-        // POST: Category/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public string DeleteCategory(int Id)
         {
-            Category category = db.Categories.Find(id);
-            db.Categories.Remove(category);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+            string msg;
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
+            if (categoryBl.DeleteCategory(Id) > 0)
             {
-                db.Dispose();
+                msg = "Data Deleted Successfully";
             }
-            base.Dispose(disposing);
+            else
+            {
+                msg = "Error. Could Not Delete Data";
+            }
+
+            return msg;
         }
     }
 }
