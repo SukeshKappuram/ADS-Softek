@@ -53,12 +53,37 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm("Index","Product")) {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <input type="submit" value="Delete" id="btnDelete" class="btn btn-default" /> |
             @Html.ActionLink("Back to List", "Index")
         </div>
     }
 </div>
+<script>
+$(document).ready(function () {
+
+   $('#btnDelete').on('click', function () {
+       alert('deleting...');
+
+        // Make Ajax request with the contentType = false, and procesDate = false
+        var ajaxRequest = $.ajax({
+        type: "DELETE",
+        url: "/api/Products/@Request.QueryString["productId"]",
+        contentType: "application/json;charset=utf-8",
+        success: function (data, status, xhr) {
+        //alert("The result is : " + status + ": " + data);
+        },
+        error: function (xhr) {
+        //alert(xhr.responseText);
+        }
+        });
+
+        ajaxRequest.done(function (xhr, textStatus) {
+        // Do other operation
+        });
+        });
+        });
+        </script>

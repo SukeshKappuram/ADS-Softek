@@ -1,0 +1,132 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div>
+    <table id="grid"></table>
+    <div id="pager"></div>
+</div>
+
+<script>
+    $(function () {
+        $("#grid").jqGrid({
+            url: "/api/ProductDetails",
+            datatype: 'json',
+            mtype: 'Get',
+            colNames: ["SerialNumber", "ProductId", "ExpieryDate", "ManufactureDate", "Size", "Color", "sellingPrice"],
+            colModel: [{ name: "SerialNumber", key: true, index: 'SerialNumber', editable: true },
+                {
+                    name: "ProductId", index: 'ProductId', editable: true, sortable: true, cellEdit: true, edittype: 'select', formatter: 'select', editoptions: {
+                        dataUrl: "/ProductDetail/selectCategory",
+                        buildSelect: function (response) {
+                            var data = typeof response === "string" ?
+                                        $.parseJSON(response) : response,
+                             s = "<select>";
+                            $.each(data, function () {
+                                s += '<option value="' + this.Id + '">' + this.Name +
+                                   '</option>';
+                            })
+                            return s + "</select>";
+                        }
+                    }
+                },
+                { name: "ExpieryDate", index: 'ExpieryDate', formatter: "date", formatoptions: { srcformat: 'd/m/Y', newformat: 'd/m/Y' }, editable: true, sortable: true },
+                 { name: "ManufactureDate", index: 'ManufactureDate', formatter: "date", formatoptions: { srcformat: 'd/m/Y', newformat: 'd/m/Y' }, editable: true, sortable: true },
+                  { name: "Size", index: 'Size', editable: true, sortable: true },
+                   { name: "Color", index: 'Color', editable: true, sortable: true },
+                    { name: "sellingPrice", index: 'sellingPrice', editable: true, sortable: true },
+            ],
+            height: 'auto',
+            autowidth: 'true',
+            rowNum: 5,
+            LoadOnce: true,
+            rowList: [10, 20, 30],
+            pager: 'pager',
+            sortName: 'ProductId',
+            viewrecords: true,
+            sortorder: 'asc',
+            caption: 'List of Products in Stock',
+            emptyrecords: 'no records',
+            jsonreader: {
+                repeatitems: false,
+                id: "0"
+            },
+            multiselect: false,
+        }).navGrid('#pager', { edit: true, add: true, del: true, search: true, refresh: true, },
+        {
+            //EDIT OPTIONS
+            width: 600,
+            url: '/api/ProductDetails/',
+            mtype: 'Put',
+            closeAfterEdit: true,
+            onInitializeForm: function () {
+                $('#ExpieryDate').datepicker({
+                    changeMonth: true,
+                    changeYear: true,
+                    nextText: "",
+                    prevText: ""
+                })
+                $('#ManufactureDate').datepicker({
+                    changeMonth: true,
+                    changeYear: true,
+                    nextText: "",
+                    prevText: ""
+                })
+            },
+            afterComplete: function (response) {
+                $('#grid').setGridParam({ datatype: 'json', page: 1 }).trigger('reloadGrid');
+                alert(response.responseText)
+            },
+
+        },
+        {
+            //ADD OPTIONS
+            width: 600,
+            url: '/api/ProductDetails/',
+            mtype: 'Post',
+            closeAfterAdd: true,
+            onInitializeForm: function () {
+                $('#ExpieryDate').datepicker({
+                    changeMonth: true,
+                    changeYear: true,
+                    nextText: "",
+                    prevText: ""
+                })
+                $('#ManufactureDate').datepicker({
+                    changeMonth: true,
+                    changeYear: true,
+                    nextText: "",
+                    prevText: ""
+                })
+            },
+            afterComplete: function (response) {
+                $('#grid').setGridParam({ datatype: 'json', page: 1 }).trigger('reloadGrid');
+                alert(response.responseText)
+            },
+
+        },
+        {
+            //DELETE OPTIONS
+            width: 600,
+            url: '/api/ProductDetails/',
+            mtype: 'Delete',
+            closeAfterDelete: true,
+            msg: "Are you sure u want to delete this data?",
+            afterComplete: function (response) {
+                $('#grid').setGridParam({ datatype: 'json', page: 1 }).trigger('reloadGrid');
+                alert(response.responseText)
+            },
+
+        },
+        {
+            //SEARCH OPTIONS
+            width: 600,
+            multipleSearch: true,
+        }
+        );
+    });
+
+    </script>

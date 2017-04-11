@@ -14,6 +14,7 @@ using System.IO;
 
 namespace EshoppingV2._0.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ProductsController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -74,12 +75,8 @@ namespace EshoppingV2._0.Controllers
 
         // POST: api/Products
         [ResponseType(typeof(Product))]
-        public IHttpActionResult PostProduct(Product product)
+        public void PostProduct()
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
             if (HttpContext.Current.Request.Files.AllKeys.Any())
             {
                 // Get the uploaded image from the Files collection
@@ -95,14 +92,8 @@ namespace EshoppingV2._0.Controllers
                     // Save the uploaded file to "UploadedFiles" folder
                     httpPostedFile.SaveAs(fileSavePath);
                 }
-
-                db.Products.Add(product);
-                db.SaveChanges();
-
-                
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = product.Id }, product);
         }
 
         // DELETE: api/Products/5

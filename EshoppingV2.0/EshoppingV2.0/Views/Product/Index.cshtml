@@ -28,7 +28,7 @@ AllProduct = data;
 
 for (var i = 0; i < AllProduct.length; i++) {
     $("tBody").append("<tr><td>" + AllProduct[i].Name + "</td><td>" + AllProduct[i].Description + "</td><td>" + AllProduct[i].Price + "</td><td>" + AllProduct[i].manufactureName +
-        "</td><td><a href='/Product/Edit/" + AllProduct[i].Id + "'>Edit</a></td><td><a href=''>Delete</a></td></tr>");
+        "</td><td><a href='/Product/Edit?productId=" + AllProduct[i].Id + "'>Edit</a></td><td><a href='/Product/Delete?productId=" + AllProduct[i].Id + "'>Delete</a></td></tr>");
 
 };
 });

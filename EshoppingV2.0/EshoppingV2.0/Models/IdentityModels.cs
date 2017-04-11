@@ -43,5 +43,7 @@ namespace EshoppingV2._0.Models
         public System.Data.Entity.DbSet<EshoppingV2._0.Models.Seller> ApplicationUsers { get; set; }
 
         public System.Data.Entity.DbSet<EshoppingV2._0.Models.Product> Products { get; set; }
+
+        public System.Data.Entity.DbSet<EshoppingV2._0.Models.ProductDetails> ProductDetails { get; set; }
     }
 }

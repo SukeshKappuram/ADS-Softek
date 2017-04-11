@@ -31,13 +31,13 @@ namespace EshoppingV2._0.Models
         [StringLength(10, MinimumLength = 4)]
         public string Color { get; set; }
         [Display(Name = "Seller")]
-        [ForeignKey("seller")]
-        public int sellerId { get; set; }
+        //[ForeignKey("seller")]
+        public Guid sellerId { get; set; }
         [Required]
         [Display(Name="Seller Price")]
         [DataType(DataType.Currency)]
         public float sellingPrice { get; set; }
         public Product product { get; set; }
-        public ApplicationUser seller { get; set; }
+        //public Seller seller { get; set; }
     }
 }

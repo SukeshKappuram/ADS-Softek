@@ -12,6 +12,7 @@ using EshoppingV2._0.Models;
 
 namespace EshoppingV2._0.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class CategoriesController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();

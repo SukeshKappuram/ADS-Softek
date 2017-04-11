@@ -1,5 +1,4 @@
 D:\ADS Softek\EshoppingV2.0\EshoppingBL\bin\Debug\EshoppingBL.dll
 D:\ADS Softek\EshoppingV2.0\EshoppingBL\bin\Debug\EshoppingBL.pdb
-D:\ADS Softek\EshoppingV2.0\EshoppingBL\obj\Debug\EshoppingBL.csprojResolveAssemblyReference.cache
 D:\ADS Softek\EshoppingV2.0\EshoppingBL\obj\Debug\EshoppingBL.dll
 D:\ADS Softek\EshoppingV2.0\EshoppingBL\obj\Debug\EshoppingBL.pdb

@@ -11,6 +11,7 @@ using System.IO;
 
 namespace EshoppingV2._0.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ProductController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -76,6 +77,7 @@ namespace EshoppingV2._0.Controllers
         // GET: Product/Edit/5
         public ActionResult Edit(int? id)
         {
+            id = Convert.ToInt32(Request.QueryString["productId"]);
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -86,29 +88,20 @@ namespace EshoppingV2._0.Controllers
                 return HttpNotFound();
             }
             ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name", product.CategoryId);
-            return View(product);
-        }
-
-        // POST: Product/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Description,Price,manufactureName,CategoryId")] Product product)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(product).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name", product.CategoryId);
+            var filePath = Server.MapPath("~/Content/Images");
+            string[] files = Directory.GetFiles(filePath, id + ".*", SearchOption.TopDirectoryOnly);
+            string path = files[0];
+            byte[] imageByteData = System.IO.File.ReadAllBytes(path);
+            string imageBase64Data = Convert.ToBase64String(imageByteData);
+            string imageDataURL = string.Format("data:image/png;base64,{0}", imageBase64Data);
+            ViewBag.ImageData = imageDataURL;
             return View(product);
         }
 
         // GET: Product/Delete/5
         public ActionResult Delete(int? id)
         {
+            id = Convert.ToInt32(Request.QueryString["productId"]);
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -119,17 +112,6 @@ namespace EshoppingV2._0.Controllers
                 return HttpNotFound();
             }
             return View(product);
-        }
-
-        // POST: Product/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Product product = db.Products.Find(id);
-            db.Products.Remove(product);
-            db.SaveChanges();
-            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)

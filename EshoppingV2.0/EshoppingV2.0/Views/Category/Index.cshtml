@@ -37,14 +37,6 @@
             width: 600,
             url: '/Category/UpdateCategory',
             closeAfterEdit: true,
-            onInitializeForm: function () {
-                $('#ExpiryDate').datepicker({
-                    changeMonth: true,
-                    changeYear: true,
-                    nextText: "",
-                    prevText: ""
-                })
-            },
             afterComplete: function (response) {
                 $('#grid').setGridParam({ datatype: 'json', page: 1 }).trigger('reloadGrid');
                 alert(response.responseText)
