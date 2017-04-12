@@ -22,6 +22,22 @@ namespace EshoppingV2._0.Controllers
             return View();
         }
 
+        [AllowAnonymous]
+        public ActionResult ViewProducts(int? id)
+        {
+            var products = db.Products.Include(p => p.Category);
+            var categories = from s in db.Products group s by s.Category;
+            ViewBag.Categories = categories;
+            if (id == null)
+            {
+                return View(products.ToList());
+            }
+            else
+            {
+                return View(products.Where(c => c.CategoryId == id).ToList());
+            }
+        }
+
         // GET: Product/Details/5
         public ActionResult Details(int? id)
         {
@@ -88,14 +104,19 @@ namespace EshoppingV2._0.Controllers
                 return HttpNotFound();
             }
             ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name", product.CategoryId);
+            
+            ViewBag.ImageData = getImage(id);
+            return View(product);
+        }
+
+        public string getImage(int? id) {
             var filePath = Server.MapPath("~/Content/Images");
             string[] files = Directory.GetFiles(filePath, id + ".*", SearchOption.TopDirectoryOnly);
             string path = files[0];
             byte[] imageByteData = System.IO.File.ReadAllBytes(path);
             string imageBase64Data = Convert.ToBase64String(imageByteData);
             string imageDataURL = string.Format("data:image/png;base64,{0}", imageBase64Data);
-            ViewBag.ImageData = imageDataURL;
-            return View(product);
+            return imageDataURL;
         }
 
         // GET: Product/Delete/5
