@@ -1,0 +1,72 @@
+﻿@{
+    ViewBag.Title = "Index";
+    <style type="text/css">
+        .grid {
+            width: 100%;
+        }
+    </style>
+}
+
+<div id='OpenDilog'></div>
+
+<h3>Cart</h3>
+
+<div style="width:100%;">
+    @{
+        WebGrid grid = new WebGrid(Model);
+        @grid.GetHtml(
+         tableStyle: "grid",
+         fillEmptyRows: false,
+         mode: WebGridPagerModes.All,
+         firstText: "<< First",
+         previousText: "< Prev",
+         nextText: "Next >",
+         lastText: "Last >>",
+         columns: new[] {
+         grid.Column("CartId",header: "ID"),
+         grid.Column("ProductId",header: "Name"),
+         grid.Column("quantity"),
+         grid.Column("Id", header: "Action", canSort:false,
+
+         format: @<text>
+            @Html.Raw("<img src='/images/edit.png' title='Edit' onclick='EditCartItem(" + item.Id + ")' />")
+            @Html.Raw("<img src='/images/delete.png' title='Edit' onclick='DeleteCartItem(" + item.Id + ")' />")
+        </text>
+        )
+     })
+    }
+</div>
+
+<link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/jquery-ui-1.10.4/themes/base/jquery-ui.css")" rel="stylesheet" type="text/css" />
+<script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+
+<script type="text/javascript">
+
+
+    function EditCartItem(E_ID) {
+        var ph = $("#OpenDilog");
+        ph.load("/Cart/Edit?id=" + E_ID, function () {
+            ph.dialog({
+                modal: true,
+                width: 500,
+                height: 400,
+                title: "Edit",
+                resizable: false
+            });
+        });
+    }
+
+    function DeleteCartItem(E_ID) {
+        if (confirm("Are You Sure Delete Selected Employee Record No.? " + E_ID)) {
+            var data = { 'Id': E_ID }
+            $.post('/Cart/Delete', data,
+            function (data) {
+                if (data == true)
+                    location = location.href;
+                else
+                    alert("Not delete something Wrong");
+            });
+        }
+    }
+    </script>

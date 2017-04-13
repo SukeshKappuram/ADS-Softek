@@ -30,5 +30,7 @@ namespace EshoppingV2._0.Models
         [Display(Name="Category")]
         public int CategoryId { get; set; }
         public Category Category { get; set; } //No coulum
+
+        public virtual List<ProductDetails> productDetails { get; set; }
     }
 }

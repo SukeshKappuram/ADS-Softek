@@ -5,6 +5,7 @@
 
     var cats = ViewBag.Categories;
     var y = "";
+    Guid pd = default(Guid);
 }
 
 <nav class="navbar navbar-inverse">
@@ -42,7 +43,7 @@
 <div class="container">
     @foreach (var item in Model)
     {
-        var img=item.Id+".png";
+        var img=item.Id+".jpg";
         <div class="col-md-4">
             <div class="thumbnail">
                 <img src="~/Content/Images/@img" alt="">
@@ -52,9 +53,13 @@
                     <p>@Html.DisplayFor(modelitem => item.Description)</p>
                     <p>@Html.DisplayFor(modelItem => item.Price)</p>
                     <p>@Html.DisplayFor(modelItem => item.manufactureName)</p>
+                    @foreach (var i in item.productDetails) {
+                        pd = i.SerialNumber;
+                        <p>@Html.DisplayFor(modelItem => i.sellingPrice)</p>
+                    }
                     <p>
-                        <a href="/Carts/Buy/@item.Id" class="btn btn-primary" role="button">Buy now &raquo;</a>
-                        <a href="/Carts/Add/@item.Id" class="btn btn-default" role="button">Add to Cart &raquo;</a>
+                        <a href="/Cart/Buy/@pd" class="btn btn-primary" role="button">Buy now &raquo;</a>
+                        <a href="/Cart/Add/@pd" class="btn btn-default" role="button">Add to Cart &raquo;</a>
                     </p>
                 </div>
             </div>

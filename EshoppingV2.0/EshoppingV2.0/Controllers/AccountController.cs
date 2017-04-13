@@ -18,15 +18,18 @@ namespace EshoppingV2._0.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        CartManager cartManager;
 
         public AccountController()
         {
+            cartManager = new CartManager();
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            cartManager=new CartManager();
         }
 
         public ApplicationSignInManager SignInManager
@@ -161,6 +164,7 @@ namespace EshoppingV2._0.Controllers
                 if (result.Succeeded)
                 {
                     await UserManager.AddToRoleAsync(user.Id, "Customer");
+                    await cartManager.CreateAsync(user.Id);
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771

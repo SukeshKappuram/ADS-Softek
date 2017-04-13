@@ -1,0 +1,59 @@
+﻿@model EshoppingV2._0.Models.CartItem
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend></legend>
+
+        <div class="editor-label">
+            Product
+        </div>
+        <div class="editor-field">
+            @Html.DisplayFor(model => model.productId)
+            @Html.ValidationMessageFor(model => model.productId)
+        </div>
+
+        <div class="editor-label">
+            Quantity
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.quantity)
+            @Html.ValidationMessageFor(model => model.quantity)
+        </div>
+
+        <div class="editor-label">
+            Cart
+        </div>
+        <div class="editor-field">
+            @Html.DisplayFor(model => model.cartId)
+            @Html.ValidationMessageFor(model => model.cartId)
+        </div>
+
+        <p>
+            <input type="button" value="Update" onclick="UpdateCartItem()" />
+        </p>
+    </fieldset>
+}
+<div>
+    @Html.ActionLink("Close", "Index")
+</div>
+
+<link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/jquery-ui-1.10.4/themes/base/jquery-ui.css")" rel="stylesheet" type="text/css" />
+<script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+
+<script type="text/javascript">
+
+    function UpdateCartItem() {
+        var quantity = $("#quantity").val();
+
+        var CartItem = {
+            "quantity": quantity,
+        };
+
+        $.post("/Cart/Edit", quantity,
+        function (data) { if (data == 0) { location = location.href; } }, 'json');
+    }
+</script>  

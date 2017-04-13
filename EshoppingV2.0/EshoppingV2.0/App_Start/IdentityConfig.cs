@@ -14,6 +14,16 @@ using EshoppingV2._0.Models;
 
 namespace EshoppingV2._0
 {
+    public class CartManager {
+        public virtual Task CreateAsync(string userId) {
+            Cart c = new Cart(); c.userId = Guid.Parse(userId);
+            ApplicationDbContext db=new ApplicationDbContext();
+            db.Carts.Add(c);
+            db.SaveChanges();
+            return Task.FromResult(0);
+        }
+    }
+    
     public class EmailService : IIdentityMessageService
     {
         public Task SendAsync(IdentityMessage message)
