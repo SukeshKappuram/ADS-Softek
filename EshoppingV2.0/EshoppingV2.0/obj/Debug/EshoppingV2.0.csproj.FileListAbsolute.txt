@@ -1,9 +1,11 @@
+D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\obj\Debug\EshoppingV2.0.csprojResolveAssemblyReference.cache
 D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\bin\EshoppingV2.0.dll.config
 D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\bin\EshoppingV2.0.dll
 D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\bin\EshoppingV2.0.pdb
 D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\bin\Antlr3.Runtime.dll
 D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\bin\EntityFramework.dll
 D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\bin\EntityFramework.SqlServer.dll
+D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\bin\EshoppingBL.dll
 D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\bin\Microsoft.AspNet.Identity.Core.dll
 D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\bin\Microsoft.AspNet.Identity.EntityFramework.dll
 D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\bin\Microsoft.AspNet.Identity.Owin.dll
@@ -30,6 +32,7 @@ D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\bin\System.Web.WebPages.Deployment.dll
 D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\bin\System.Web.WebPages.dll
 D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\bin\System.Web.WebPages.Razor.dll
 D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\bin\WebGrease.dll
+D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\bin\EshoppingBL.pdb
 D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\bin\System.Net.Http.Formatting.xml
 D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\bin\System.Web.Http.xml
 D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\bin\System.Web.Http.WebHost.xml
@@ -58,6 +61,3 @@ D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\bin\Microsoft.Owin.Security.Twitter.xm
 D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\obj\Debug\EshoppingV2.0.dll
 D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\obj\Debug\EshoppingV2.0.pdb
-D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\obj\Debug\EshoppingV2.0.csprojResolveAssemblyReference.cache
-D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\bin\EshoppingBL.dll
-D:\ADS Softek\EshoppingV2.0\EshoppingV2.0\bin\EshoppingBL.pdb

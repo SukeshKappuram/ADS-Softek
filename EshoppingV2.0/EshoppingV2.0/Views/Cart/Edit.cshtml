@@ -11,7 +11,11 @@
             Product
         </div>
         <div class="editor-field">
-            @Html.DisplayFor(model => model.productId)
+            @Html.EditorFor(model => model.Id, new { id = "Id" })
+            @Html.ValidationMessageFor(model => model.Id)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.productId, new { id = "productId" })
             @Html.ValidationMessageFor(model => model.productId)
         </div>
 
@@ -19,7 +23,7 @@
             Quantity
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.quantity)
+            @Html.EditorFor(model => model.quantity, new { id = "quantity" })
             @Html.ValidationMessageFor(model => model.quantity)
         </div>
 
@@ -47,13 +51,19 @@
 <script type="text/javascript">
 
     function UpdateCartItem() {
+        var Id=$("#Id").val();
         var quantity = $("#quantity").val();
+        var cartId = $("#cartId").val();
+        var productId = $("#productId").val();
 
-        var CartItem = {
+        var cartItem = {
+            "Id": Id,
+            "cartId": cartId,
+            "productId": productId,
             "quantity": quantity,
         };
 
-        $.post("/Cart/Edit", quantity,
+        $.post("/Cart/Edit", cartItem,
         function (data) { if (data == 0) { location = location.href; } }, 'json');
     }
 </script>  

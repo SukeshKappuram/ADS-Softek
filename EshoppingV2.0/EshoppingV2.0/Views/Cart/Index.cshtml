@@ -36,6 +36,11 @@
      })
     }
 </div>
+    <div style="float:right">
+        @Html.ActionLink("Continue Shopping", "index", "Home",null, new { @class = "btn btn-primary" })
+        @Html.ActionLink("Continue Shipping", "ShipTo", "ShippingAddresses", null,new { @class = "btn btn-primary" }) 
+    </div>
+    
 
 <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
 <link href="@Url.Content("~/jquery-ui-1.10.4/themes/base/jquery-ui.css")" rel="stylesheet" type="text/css" />

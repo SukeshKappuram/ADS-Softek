@@ -173,7 +173,6 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CartController.cs" />
-    <Compile Include="Controllers\CartsController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -182,6 +181,9 @@
     <Compile Include="Controllers\ProductDetailController.cs" />
     <Compile Include="Controllers\ProductDetailsController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\SalesOrdersController.cs" />
+    <Compile Include="Controllers\ShippingAddressesController.cs" />
+    <Compile Include="Controllers\SpecialOffersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -192,9 +194,14 @@
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\OrderDetails.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductDetails.cs" />
+    <Compile Include="Models\SalesOrder.cs" />
+    <Compile Include="Models\SalesTransaction.cs" />
     <Compile Include="Models\Seller.cs" />
+    <Compile Include="Models\ShippingAddress.cs" />
+    <Compile Include="Models\SpecialOffer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -1013,6 +1020,22 @@
     <Content Include="Views\Product\ViewProducts.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Cart\Edit.cshtml" />
+    <Content Include="Views\ShippingAddresses\Create.cshtml" />
+    <Content Include="Views\ShippingAddresses\Delete.cshtml" />
+    <Content Include="Views\ShippingAddresses\Details.cshtml" />
+    <Content Include="Views\ShippingAddresses\Edit.cshtml" />
+    <Content Include="Views\ShippingAddresses\Index.cshtml" />
+    <Content Include="Views\ShippingAddresses\ShipTo.cshtml" />
+    <Content Include="Views\SalesOrders\Create.cshtml" />
+    <Content Include="Views\SalesOrders\Delete.cshtml" />
+    <Content Include="Views\SalesOrders\Details.cshtml" />
+    <Content Include="Views\SalesOrders\Edit.cshtml" />
+    <Content Include="Views\SalesOrders\Index.cshtml" />
+    <Content Include="Views\SpecialOffers\Create.cshtml" />
+    <Content Include="Views\SpecialOffers\Delete.cshtml" />
+    <Content Include="Views\SpecialOffers\Details.cshtml" />
+    <Content Include="Views\SpecialOffers\Edit.cshtml" />
+    <Content Include="Views\SpecialOffers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

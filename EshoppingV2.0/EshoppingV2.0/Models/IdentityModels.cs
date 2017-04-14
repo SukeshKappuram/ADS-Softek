@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 
 namespace EshoppingV2._0.Models
 {
@@ -49,5 +50,15 @@ namespace EshoppingV2._0.Models
         public System.Data.Entity.DbSet<EshoppingV2._0.Models.Cart> Carts { get; set; }
 
         public System.Data.Entity.DbSet<EshoppingV2._0.Models.CartItem> CartItems { get; set; }
+
+        public System.Data.Entity.DbSet<EshoppingV2._0.Models.ShippingAddress> ShippingAddresses { get; set; }
+
+        public System.Data.Entity.DbSet<EshoppingV2._0.Models.SalesOrder> SalesOrders { get; set; }
+        public System.Data.Entity.DbSet<EshoppingV2._0.Models.OrderDetails> OrderDetails { get; set; }
+
+        public System.Data.Entity.DbSet<EshoppingV2._0.Models.SalesTransaction> SalesTransactions { get; set; }
+        public System.Data.Entity.DbSet<EshoppingV2._0.Models.SpecialOffer> SpecialOffers { get; set; }
+
+        
     }
 }

@@ -17,6 +17,7 @@ namespace EshoppingV2._0.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+
         // GET: Cart
         public ActionResult Index()
         {
@@ -61,14 +62,11 @@ namespace EshoppingV2._0.Controllers
             return RedirectToAction("Index");
         }
 
-     
-  
         [HttpGet]  
         public PartialViewResult Edit(Int32 id)  // Update PartialView  
         {  
             CartItem cartItem = db.CartItems.Where(x => x.Id == id).FirstOrDefault();  
-            CartItem cartItm = new CartItem();  
-  
+            CartItem cartItm = new CartItem();
             cartItm.Id = cartItem.Id;  
             cartItm.productId = cartItem.productId;  
             cartItm.quantity = cartItem.quantity;  
@@ -79,14 +77,8 @@ namespace EshoppingV2._0.Controllers
   
         [HttpPost]  
         public JsonResult Edit(CartItem cartItem)  // Record Update 
-        {  
-              
-            CartItem cartItm = db.CartItems.Where(x => x.Id == cartItem.Id).FirstOrDefault();  
-  
-            cartItm.quantity = cartItem.quantity;  
-            db.SaveChanges();  
-  
-            return Json(cartItm, JsonRequestBehavior.AllowGet);  
+        {
+            return Json(cartItem, JsonRequestBehavior.AllowGet);  
         }  
   
         public JsonResult Delete(Int32 id)  

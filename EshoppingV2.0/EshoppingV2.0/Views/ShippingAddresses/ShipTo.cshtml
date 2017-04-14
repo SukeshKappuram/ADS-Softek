@@ -1,0 +1,65 @@
+﻿@model IEnumerable<EshoppingV2._0.Models.ShippingAddress>
+
+@{
+    ViewBag.Title = "ShipTo";
+}
+
+<h2>Shippping </h2>
+
+<form action="/SalesOrders/CreateOrder">
+    <table class="table">
+        <tr>
+            <td>
+                Ship To
+            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.location)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.state)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pincode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.userId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.phoneNumber)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <input type="radio" value="@item.Id" name="addressId" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.location)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.state)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pincode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.userId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.phoneNumber)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>
+    <button type="submit">Process the Order</button>
+</form>
+<p>
+    @Html.ActionLink("Add New Address", "Create")
+</p>
